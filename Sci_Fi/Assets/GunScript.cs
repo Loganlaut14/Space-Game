@@ -23,14 +23,21 @@ public class GunScript : MonoBehaviour
 
     public Animator animator;
 
-    void Start()
+    void Start ()
     {
         currentAmmo = maxAmmo;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable ()
     {
+        isReloading = false;
+        animator.SetBool("Reloading", false);
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        
         if (isReloading)
             return;
 
@@ -54,14 +61,16 @@ public class GunScript : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
 
-        animator.SetBool("Reloading...", true);
+        animator.SetBool("Reloading", true);
 
-        yield return new WaitForSeconds(reloadTime);
-
-        animator.SetBool("Reloading...", false);
+        yield return new WaitForSeconds(reloadTime - .25f);
+        animator.SetBool("Reloading", false);
+        yield return new WaitForSeconds(.25f);
 
         currentAmmo = maxAmmo;
         isReloading = false;
+           
+      
     }
 
     void Shoot ()
