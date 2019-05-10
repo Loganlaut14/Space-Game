@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -25,5 +26,20 @@ public class Player : MonoBehaviour
         position.y = data.position[1];
         position.z = data.position[2];
         transform.position = position;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health--;
+            //healthText.GetComponent<Text>().text = "Health" + health;
+           //healthSlider.GetComponent<Slider>().value = health;
+        }
+        if (health <= 0)
+        {
+            //reload the level
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
