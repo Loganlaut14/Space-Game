@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class SavePosition : MonoBehaviour
 {
     string savePath;
-  
+
     void Start()
     {
         savePath = Application.persistentDataPath + "/" + gameObject.name + "myData.dat";
@@ -17,15 +18,17 @@ public class SavePosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+       if (Input.GetKeyDown(KeyCode.S))
         {
             Save();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Load();
         }
     }
+
+       
     void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -50,6 +53,7 @@ public class SavePosition : MonoBehaviour
             FileStream file = File.Open(savePath, FileMode.Open);
             DataObject data = (DataObject)bf.Deserialize(file);
             transform.position = data.GetVector3();
+                       
         }
     }
 }
