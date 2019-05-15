@@ -18,11 +18,11 @@ public class SavePosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.S))
+       //if (Input.GetKeyDown(KeyCode.S))
         {
             Save();
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        //if (Input.GetKeyDown(KeyCode.L))
         {
             Load();
         }
