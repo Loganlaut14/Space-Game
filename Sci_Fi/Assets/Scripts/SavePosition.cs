@@ -20,16 +20,17 @@ public class SavePosition : MonoBehaviour
     {
        //if (Input.GetKeyDown(KeyCode.S))
         {
-            Save();
+            //Save();
         }
-        //if (Input.GetKeyDown(KeyCode.L))
+       // if (Input.GetKeyDown(KeyCode.L))
         {
-            Load();
+            //Load();
         }
     }
 
+    
        
-    void Save()
+    public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file;
@@ -45,7 +46,7 @@ public class SavePosition : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
     }
-    void Load()
+    public void Load()
     {
         BinaryFormatter bf = new BinaryFormatter();
         if(File.Exists(savePath))
@@ -53,8 +54,13 @@ public class SavePosition : MonoBehaviour
             FileStream file = File.Open(savePath, FileMode.Open);
             DataObject data = (DataObject)bf.Deserialize(file);
             transform.position = data.GetVector3();
-                       
+            file.Close();   
         }
+        else
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        
     }
 }
 [System.Serializable]
