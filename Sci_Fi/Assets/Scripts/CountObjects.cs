@@ -21,6 +21,10 @@ public class CountObjects : MonoBehaviour {
             Destroy(objToDestroy);
             objUI.GetComponent<Text>().text = "Find The Ship.";
         }
+        else
+        {
+            
+        }
 
 	}
 }

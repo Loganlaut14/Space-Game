@@ -6,14 +6,15 @@ public class ObjectsToCollect : MonoBehaviour {
     public static int objects = 0;
 	// Use this for initialization
 	void Awake () {
-        objects++;
+        objects = GameObject.FindGameObjectsWithTag("Collectible").Length;
 	}
-	
-	// Update is called once per frame
+    
+    // Update is called once per frame
     void OnTriggerEnter(Collider plyr)
     {
         if (plyr.gameObject.tag == "Player")
             objects--;
         gameObject.SetActive(false);
     }
+
 }
