@@ -7,6 +7,8 @@ public class PauseButton : MonoBehaviour {
     // Use this for initialization
     void Start() {
         Time.timeScale = Tm;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -17,13 +19,17 @@ public class PauseButton : MonoBehaviour {
             if (Time.timeScale == 0)
                 {
                 Resume();
-                
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else 
             {
                 //Show Menu Buttons, Pause game
                 GetComponent<Canvas>().enabled = true;
                 Time.timeScale = 0;
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
 
         }
