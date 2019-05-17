@@ -11,7 +11,7 @@ public class LoadLVL2 : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // attach to the object ending the game, not the player
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("CutScene");
         }
 
     }
