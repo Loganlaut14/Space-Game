@@ -7,7 +7,7 @@ public class WinGame : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("Win");
         }
